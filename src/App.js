@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Question from './components/question/question.component';
 
 function App() {
+  // State to keep track if game has started.
+  const [start, setStart] = React.useState(false);
+
+  // Get trivia data from API and save to state
+  const [triviaData, setTriviaData] = React.useState({})
+
+  React.useEffect(function () {
+    const fetchData = async () => {
+      const res = await fetch('https://opentdb.com/api.php?amount=5&type=multiple');
+      const data = await res.json();
+      setTriviaData(data);
+    }
+
+    fetchData()
+      .catch(console.error)
+  }, [])
+
+  console.log(triviaData)
+
+  function startGame() {
+    setStart(true);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {start ?
+        <Question
+          question={triviaData.results.question}
+          correctAnswer={triviaData.results.correct_answer}
+          incorrectAnswers={triviaData.results.incorrect_answers}
+        /> :
+        <div className='intro-page'>
+          <h1>Quizzical app</h1>
+          <p>Enter and test your knowledge!</p>
+          <button onClick={startGame}>Start Quiz</button>
+        </div>
+      }
     </div>
   );
 }

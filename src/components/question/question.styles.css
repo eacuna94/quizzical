@@ -1,0 +1,28 @@
+.question {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #293264;
+  margin-bottom: 12px;
+}
+
+.answer {
+  margin-right: 12px;
+  padding: 4px 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 500;
+  border: 0.794239px solid #4D5B9E;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.answer:hover {
+  background-color: rgba(214, 219, 245, 0.5);
+}
+
+.selected-answer {
+  border: transparent;
+  background-color: #D6DBF5;
+}
+
