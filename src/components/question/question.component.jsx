@@ -1,16 +1,19 @@
 import React from "react";
 import './question.styles.css';
+import Answers from "../answers/answers.component";
 
 export default function Question(props) {
+  // const answerChoices = props.answers.map((answer, index) => (
+  //   <Answers key={index} answerText={answer} />
+  // ))
+
   return (
-    <div className="question-container">
-      <h1 className="question">How would one say goodbye in Spanish?</h1>
-      <div className="answer-choices">
-        <span className="answer">Adios</span>
-        <span className="answer">Au Revoir</span>
-        <span className="answer">Tschuss</span>
-        <span className="answer">Anyeong</span>
-      </div>
+    <div>
+      <h1 className="question">{props.questionText}</h1>
     </div>
   )
 }
+
+// for (let i = 0; i < triviaData.length; i++) {
+//   console.log(triviaData[i].incorrect_answers)
+// }
