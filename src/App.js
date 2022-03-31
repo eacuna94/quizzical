@@ -55,8 +55,8 @@ function App() {
   console.log(answers)
 
   // Generate questions array
-  const questions = triviaData.map((el) => (
-    <Question questionText={el.question} />
+  const questions = triviaData.map((el, index) => (
+    <Question questionText={el.question} answerChoices={answers[index]} />
   ))
 
   function startGame() {

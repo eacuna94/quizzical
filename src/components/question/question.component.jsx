@@ -3,12 +3,17 @@ import './question.styles.css';
 import Answers from "../answers/answers.component";
 
 export default function Question(props) {
-  // const answerChoices = props.answers.map((answer, index) => (
-  //   <Answers key={index} answerText={answer} />
-  // ))
+  const answerChoices = props.answerChoices.map((answer, index) => (
+    <Answers key={index} answerText={answer} />
+  ))
 
   return (
-    <h1 className="question" dangerouslySetInnerHTML={{ __html: props.questionText }} />
+    <div>
+      <h1 className="question" dangerouslySetInnerHTML={{ __html: props.questionText }} />
+      <div className="answer-container">
+        {answerChoices}
+      </div>
+    </div>
   )
 }
 
