@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { nanoid } from 'nanoid';
 import Question from './components/question/question.component';
-import Answers from './components/answers/answers.component';
+// import Answers from './components/answers/answers.component';
 
 function App() {
   // State to keep track if game has started.
@@ -55,12 +55,9 @@ function App() {
   console.log(answers)
 
   // Generate questions array
-  const questions = triviaData.map((el, index) => (
-    <Question key={index} questionText={el.question} />
-
+  const questions = triviaData.map((el) => (
+    <Question questionText={el.question} />
   ))
-
-  console.log(questions)
 
   function startGame() {
     setStart(true);
@@ -69,7 +66,9 @@ function App() {
   return (
     <div className="App">
       {start ?
-        { questions }
+        <div className='question-container'>
+          {questions}
+        </div>
         :
         <div className='intro-page'>
           <h1>Quizzical app</h1>

@@ -8,9 +8,7 @@ export default function Question(props) {
   // ))
 
   return (
-    <div>
-      <h1 className="question">{props.questionText}</h1>
-    </div>
+    <h1 className="question" dangerouslySetInnerHTML={{ __html: props.questionText }} />
   )
 }
 
