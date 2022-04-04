@@ -7,9 +7,21 @@ export default function Question(props) {
     <Answers key={index} answerText={answer} />
   ))
 
+  // function selectAnswer(id) {
+  //   const index = props.answerChoices.findIndex(object => {
+  //     return object.id === id;
+  //   });
+  //   props.setTriviaData(prevData => prevData.map(el => {
+  //     if (el.id === id) {
+  //       const selectedAnswerObj = prevData[index].map(obj => ({...obj, }))
+  //       return 
+  //     }
+  //   }))
+  // }
+
   return (
     <div>
-      <h1 className="question" dangerouslySetInnerHTML={{ __html: props.questionText }} />
+      <h1 className="question" dangerouslySetInnerHTML={{ __html: props.question }} />
       <div className="answer-container">
         {answerChoices}
       </div>

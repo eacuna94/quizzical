@@ -52,11 +52,32 @@ function App() {
     shuffle(choices);
     answers.push(choices);
   }
-  console.log(answers)
+
+  // Generate answer objects using shuffled array. Add to state to keep track of answer logic
+  let answerObjects = [];
+  for (let i = 0; i < triviaData.length; i++) {
+    for (let j = 0; j < answers.length - 1; j++) {
+      let currentAnswer = answers[i][j];
+      let isCorrectAnswer = currentAnswer === triviaData[i].correct_answer ? true : false;
+      answerObjects.push({
+        value: answers[i][j],
+        id: nanoid(),
+        isCorrect: isCorrectAnswer,
+        isSelected: false,
+        questionId: i
+      })
+    }
+  }
+
+  console.log(answerObjects)
+
+  React.useEffect(function () {
+    setTriviaData(prevTrivia => [...prevTrivia, ...answerObjects])
+  }, [])
 
   // Generate questions array
   const questions = triviaData.map((el, index) => (
-    <Question questionText={el.question} answerChoices={answers[index]} />
+    <Question answerChoices={answers[index]} {...el} />
   ))
 
   function startGame() {
